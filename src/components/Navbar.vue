@@ -295,8 +295,7 @@ const homePage = () => {
                         <div class="ml-4 flex lg:ml-0">
                             <a @click="homePage">
                                 <span class="sr-only">Your Company</span>
-                                <img class="h-8 w-auto cursor-pointer"
-                                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                                <img class="h-20 w-auto cursor-pointer" src="src/assets/Missandei-Logo.png" alt="" />
                             </a>
                         </div>
 

@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.content {
-    
-}
-
 .header {
     z-index: 999;
     position: relative;
