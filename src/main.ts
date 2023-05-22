@@ -10,8 +10,11 @@ import BaseLayout from './components/BaseLayout.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { 
+    faBars,
+    faCartShopping,
     faChevronLeft,
-    faChevronRight 
+    faChevronRight, 
+    faMagnifyingGlass
 } from '@fortawesome/free-solid-svg-icons'
 
 const app = createApp(App);
@@ -19,6 +22,9 @@ const app = createApp(App);
 library.add(
     faChevronLeft,
     faChevronRight,
+    faBars,
+    faMagnifyingGlass,
+    faCartShopping,
 );
 app.use(createPinia());
 app.use(router);

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Carousel from '@/components/Carousel.vue';
 import Slide from '@/components/Slide.vue';
+import Feature from '@/components/ProductFeature.vue';
+import { ref } from 'vue';
 
 const carouselSlides = [
     {
@@ -14,11 +16,37 @@ const carouselSlides = [
     }
 ];
 
+const featureProducts = [
+    {
+        title: 'product 1',
+        code: 'A46',
+        description: 'Waist Size: 26-28, length: 16',
+        collection: 'Summer Collection',
+        image_url: 'src/assets/p1.jpg'
+    },
+    {
+        title: 'product 2',
+        code: 'A45',
+        description: 'Size: XS up to small',
+        collection: 'Formal Collection',
+        image_url: 'src/assets/p2.jpg'
+    },
+    {
+        title: 'product 3',
+        code: 'A4',
+        description: 'Size: 27, Length: 29',
+        collection: 'Trouser Collection',
+        image_url: 'src/assets/p3.jpg'
+    }
+];
+
+const isOpen = ref(true);
+
 </script>
 
 <template>
     <BaseLayout>
-        <div>
+        <div class="">
             <Carousel class="carousel" v-slot="{ currentSlide }">
                 <Slide v-for="(slide, index) in carouselSlides" :key="index">
                     <div v-show="currentSlide === index + 1" class="slide-info">
@@ -28,8 +56,8 @@ const carouselSlides = [
             </Carousel>
         </div>
 
-        <div>
-            <h1>Features</h1>
+        <div class="product-features">
+            <Feature v-for="featureProduct in featureProducts" :key="featureProduct.code" :product="featureProduct" />
         </div>
     </BaseLayout>
 </template>
@@ -37,11 +65,10 @@ const carouselSlides = [
 <style lang="scss" scoped>
 .carousel {
     position: relative;
-    max-height: 100%;
     max-width: 100%;
     width: 100%;
-    height: 100vh;
-    background-color: #ffa500;
+    height: 500px;
+    background-color: #808080;
 
     .slide-info {
         position: absolute;
@@ -59,5 +86,21 @@ const carouselSlides = [
         height: 100%;
         object-fit: cover;
     }
+}
+
+.parallax {
+    background-attachment: fixed;
+    // background-image: url("src/assets/pexels-francesco-ungaro-2325446.jpg");
+    // min-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    // background-size: cover;
+}
+
+.product-features {
+    display: flex;
+    max-width: 100%;
+    padding: 25px;
+    margin: 0 auto;
 }
 </style>

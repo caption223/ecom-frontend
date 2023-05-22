@@ -8,7 +8,17 @@ import Navbar from '@/components/Navbar.vue';
         <Navbar />
     </header>
 
-    <main>
+    <main class="main">
         <slot />
     </main>
+
+    <footer>
+        footer
+    </footer>
 </template>
+
+<style lang="scss">
+.main {
+    background-color: #f8f7f7;
+}
+</style>
