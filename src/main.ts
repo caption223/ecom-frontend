@@ -4,7 +4,7 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 
-import './assets/main.css';
+import './assets/main.scss';
 
 import BaseLayout from './components/BaseLayout.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -14,8 +14,13 @@ import {
     faCartShopping,
     faChevronLeft,
     faChevronRight, 
-    faMagnifyingGlass
+    faEnvelope, 
+    faLocationDot, 
+    faMagnifyingGlass,
+    faPhone,
+    
 } from '@fortawesome/free-solid-svg-icons'
+import { faSquareFacebook, faSquareInstagram, faSquareTwitter } from '@fortawesome/free-brands-svg-icons'
 
 const app = createApp(App);
 
@@ -25,6 +30,12 @@ library.add(
     faBars,
     faMagnifyingGlass,
     faCartShopping,
+    faSquareFacebook,
+    faPhone,
+    faEnvelope,
+    faLocationDot,
+    faSquareInstagram,
+    faSquareTwitter
 );
 app.use(createPinia());
 app.use(router);

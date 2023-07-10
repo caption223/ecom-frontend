@@ -6,7 +6,7 @@ const props = defineProps(['product']);
     <div class="card">
         <div class="card-inner">
             <div class="card-image">
-                <img class="image" :src="props.product.image_url" />
+                <img :src="props.product.image_url" />
             </div>
             <div class="card-detail">
                 <h2>{{ props.product.title }}</h2>
@@ -18,18 +18,20 @@ const props = defineProps(['product']);
 
 <style lang="scss" scoped>
 .card {
-    flex: 1 1 33.333%;
+    display: flex;
     width: 100%;
     padding: 25px;
 
     .card-inner {
-        position: relative;
         padding: 25px;
         box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
         background-color: #fff;
 
-        .card-image .image {
-            width: 100%;
+        .card-image {
+            img {
+                width: 300px;
+                height: 300px;
+            }
         }
 
         .card-detail {

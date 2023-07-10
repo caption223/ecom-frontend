@@ -46,7 +46,7 @@ const isOpen = ref(true);
 
 <template>
     <BaseLayout>
-        <div class="">
+        <div>
             <Carousel class="carousel" v-slot="{ currentSlide }">
                 <Slide v-for="(slide, index) in carouselSlides" :key="index">
                     <div v-show="currentSlide === index + 1" class="slide-info">
@@ -56,8 +56,13 @@ const isOpen = ref(true);
             </Carousel>
         </div>
 
-        <div class="product-features">
-            <Feature v-for="featureProduct in featureProducts" :key="featureProduct.code" :product="featureProduct" />
+        <div class="features">
+            <div class="features-title">
+                <h1>Features</h1>
+            </div>
+            <div class="features-main">
+                <Feature v-for="featureProduct in featureProducts" :key="featureProduct.code" :product="featureProduct" />
+            </div>
         </div>
     </BaseLayout>
 </template>
@@ -67,8 +72,9 @@ const isOpen = ref(true);
     position: relative;
     max-width: 100%;
     width: 100%;
-    height: 500px;
+    height: 100vh;
     background-color: #808080;
+    color: black;
 
     .slide-info {
         position: absolute;
@@ -88,19 +94,22 @@ const isOpen = ref(true);
     }
 }
 
-.parallax {
-    background-attachment: fixed;
-    // background-image: url("src/assets/pexels-francesco-ungaro-2325446.jpg");
-    // min-height: 500px;
-    background-position: center;
-    background-repeat: no-repeat;
-    // background-size: cover;
-}
+.features {
+    .features-main {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 10px;
+    }
 
-.product-features {
-    display: flex;
-    max-width: 100%;
-    padding: 25px;
-    margin: 0 auto;
+    .features-title {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+
+        h1 {
+            font-size: 45px;
+        }
+    }
 }
 </style>

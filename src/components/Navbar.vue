@@ -2,118 +2,25 @@
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const emit = defineEmits(['open']);
+const props = defineProps(['isMobileNavigationVisible', 'isHidden']);
 
-const navigate = (to: string) => {
-    router.push(to);
-}
-
-const profile = () => {
-    router.push('/profile');
-}
-
-const settings = () => {
-    router.push('/settings');
-}
-
-const login = () => {
-    router.push('/login');
-}
-
-const registerPage = () => {
-    router.push('/register');
-}
-
-const homePage = () => {
-    router.push('/');
-}
-
-const open = () => {
-    emit('open');
-};
-
+const navigations = [
+    { path: '/about', name: 'About' },
+    { path: '/register', name: 'Create account' },
+    { path: '/login', name: 'Login' },
+];
 </script>
 
 <template>
-    <div class="navbar-container">
-
-        <div>
-            <i class="bar-icon" @click="open">
-                <font-awesome-icon :icon="['fas', 'bars']" />
-            </i>
-        </div>
-
-        <div class="logo">
-            <img src="src/assets/Missandei-Logo.png" @click="homePage">
-        </div>
-
-        <div class="search-container">
-            <form>
-                <input type="text" class="search-box" placeholder="Search" />
-                <span class="icon">
-                    <i>
-                        <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
-                    </i>
-                </span>
-
-            </form>
-        </div>
-
-        <div>
-            <a>Sign in</a>
-            <a>Create an account</a>
-        </div>
-
-        <div>
-            <i>
-                <font-awesome-icon :icon="['fas', 'cart-shopping']" />
-            </i>
-        </div>
-
-    </div>
+    <nav>
+        <ul id="base-navigation" class="base-navigation flex" :data-visible="isMobileNavigationVisible">
+            <li class="active" v-for="(navigation, index) in navigations" :key="index">
+                <a>
+                    <span aria-hidden="true">{{ index }}</span>{{ navigation.name }}
+                </a>
+            </li>
+        </ul>
+        <span class="mobile-naviigation-footer" :aria-hidden="isHidden">since
+            2022</span>
+    </nav>
 </template>
-
-<style lang="scss" scoped>
-.navbar-container {
-    display: flex;
-    background-color: #ffffff;
-    max-width: 100%;
-    width: 100%;
-    height: 60px;
-    align-items: center;
-
-    .bar-icon {
-        cursor: pointer;
-    }
-
-    div {
-        margin: 10px;
-        padding: 20px;
-    }
-
-    .logo {
-        cursor: pointer;
-        width: 200px;
-    }
-
-    .search-container {
-
-        .search-box {
-            border-radius: 5px;
-            width: 1080px;
-            position: relative;
-        }
-
-        .icon {
-            margin: 10px;
-            position: absolute;
-            cursor: pointer;
-        }
-    }
-
-    a {
-        margin: 10px;
-        cursor: pointer;
-    }
-}
-</style>
